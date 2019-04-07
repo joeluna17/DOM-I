@@ -40,3 +40,69 @@ const siteContent = {
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
+
+let nav = document.querySelector('nav')
+let navItems = nav.querySelectorAll('a')
+for(var i = 0; i<navItems.length; i++){
+      navItems[i].textContent = siteContent.nav[`nav-item-${[i+1]}`]
+      navItems[i].style.color = 'green'; // make the links green
+}
+
+// adding anchor elements
+let compNews = document.createElement('a')
+compNews.textContent = 'Company News';
+compNews.style.color = 'green';
+nav.append(compNews);
+ 
+let subscribe = document.createElement('a')
+subscribe.textContent = 'Subscribe';
+subscribe.style.color = 'green';
+nav.prepend(subscribe)
+// end adding anchor elements
+
+document.querySelector('#cta-img').src = siteContent.cta["img-src"]
+
+let cta = document.querySelector('.cta-text')
+let ctaEle = cta.children; // children will give you a HTML COLLECTION
+cta.firstElementChild.textContent = siteContent.cta.h1;  // you can set the h1 like this, but the bottom is easier and a little clearer
+ctaEle[1].textContent = siteContent.cta.button;
+
+
+let mc = document.querySelectorAll('.text-content')
+let mcChildren1 = mc[0].children
+mcChildren1[0].textContent = siteContent['main-content']['features-h4'];
+mcChildren1[1].textContent = siteContent['main-content']['features-content'];
+
+let mcChildren2 = mc[1].children;
+mcChildren2[0].textContent = siteContent["main-content"]["about-h4"];
+mcChildren2[1].textContent = siteContent["main-content"]["about-content"];
+
+let middleImgBanner = document.querySelector('#middle-img');
+middleImgBanner.src = siteContent["main-content"]["middle-img-src"];
+
+
+let mcChildren3 = mc[2].children;
+mcChildren3[0].textContent = siteContent["main-content"]["services-h4"];
+mcChildren3[1].textContent = siteContent["main-content"]["services-content"];
+
+mcChildren4 = mc[3].children;
+mcChildren4[0].textContent = siteContent["main-content"]["product-h4"];
+mcChildren4[1].textContent = siteContent["main-content"]["product-content"];
+
+let mcChildren5 = mc[4].children;
+mcChildren5[0].textContent = siteContent["main-content"]["vision-h4"];
+mcChildren5[1].textContent = siteContent["main-content"]["vision-content"];
+
+let contact = document.querySelector('.contact').children
+let contactVal = Object.values(siteContent.contact)
+
+for(let i=0; i<contact.length; i++){
+    for(let j=0; j<contactVal.length; j++){
+          contact[i].textContent = contactVal[i]
+    }
+}
+
+const footer = document.querySelector('footer');
+footer.textContent = siteContent.footer.copyright;
+
+
